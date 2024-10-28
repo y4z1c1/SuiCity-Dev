@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import Mint from "./Mint";
 import { useSignPersonalMessage, useCurrentAccount } from "@mysten/dapp-kit";
-import AirdropCalculator from "./AirdropCalculator";
 
 
 const WalletChecker = ({
     showModal,
     onMintSuccess,
-    onMessageGenerated,
-    onSignatureGenerated,
+
 
 }: {
     showModal: (message: string, bgColor: 0 | 1 | 2) => void;
@@ -25,29 +23,17 @@ const WalletChecker = ({
     const tweetId = "1838160920129782259"; // Example tweet ID to check
     const { mutate: signPersonalMessage } = useSignPersonalMessage(); // Hook to sign message
     const [loadingVerification, setLoadingVerification] = useState<boolean>(false); // Track verification loading state
-    const [totalAirdrop, setTotalAirdrop] = useState<number | null>(null); // Track total airdrop value
+    const [totalAirdrop,] = useState<number | null>(null); // Track total airdrop value
     const [isFollowed, setIsFollowed] = useState<boolean>(false); // Track if follow task is clicked
     const [isLiked, setIsLiked] = useState<boolean>(false); // Track if like task is clicked
     const [isRetweeted, setIsRetweeted] = useState<boolean>(false); // Track if retweet task is clicked
     const [isQuoted, setIsQuoted] = useState<boolean>(false); // Track if quote task is clicked
     const [isVerified, setIsVerified] = useState<boolean>(false); // Track if tasks are verified
     const [tasksEnabled, setTasksEnabled] = useState<boolean>(true); // State to track if task buttons are enabled
-    const [isAirdropCalculated, setIsAirdropCalculated] = useState<boolean>(false); // New state
+    const [isAirdropCalculated,] = useState<boolean>(false); // New state
 
 
 
-    const handleAirdropCalculated = (totalAirdrop: number) => {
-        setTotalAirdrop(totalAirdrop);
-        setIsAirdropCalculated(true); // Set to true when airdrop calculation is done
-    };
-
-    const handleMessageGenerated = (message: string | null) => {
-        onMessageGenerated(message);
-    };
-
-    const handleSignatureGenerated = (signature: string | null) => {
-        onSignatureGenerated(signature);
-    }
 
 
 

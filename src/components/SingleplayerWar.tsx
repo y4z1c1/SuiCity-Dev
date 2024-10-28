@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from "react";
 import { ADDRESSES } from "../../addresses.ts";
 import { Transaction, coinWithBalance } from "@mysten/sui/transactions";
 import { useSignAndExecuteTransaction, useSuiClient, useCurrentAccount } from "@mysten/dapp-kit";
-import { SuiClient, getFullnodeUrl } from "@mysten/sui/client";
 import "../assets/styles/War.css";
 
 const SingleplayerWar = ({
@@ -40,7 +39,7 @@ const SingleplayerWar = ({
     const [selectedEnemyIndex, setSelectedEnemyIndex] = useState<number | null>(null); // Track selected enemy
     const [warStory, setWarStory] = useState<string>(""); // Track the war story
     const [transactionDigest, setTransactionDigest] = useState<string | null>(null); // New state to track digest
-    const [countdown, setCountdown] = useState<string | null>(null); // Countdown timer for 6 hours
+    const [, setCountdown] = useState<string | null>(null); // Countdown timer for 6 hours
     const [canStartWar, setCanStartWar] = useState(false); // Track if war can be started
     const [isShieldActive, setIsShieldActive] = useState<boolean>(true); // Track if shield is active
     const [videoSource, setVideoSource] = useState<string>(""); // Track the video source
@@ -67,7 +66,6 @@ const SingleplayerWar = ({
             }),
     });
 
-    const client = new SuiClient({ url: getFullnodeUrl("testnet") });
 
     // Function to format the balance for readability
     const formatBalance = (balance: number) => {
@@ -168,7 +166,7 @@ const SingleplayerWar = ({
         nftName: string,
         warPower: number,
         opponentPower: number,
-        opponentName: string
+        _opponentName: string
     ): string => {
         const powerDifference = Number(warPower) - Number(opponentPower);
         console.log("Power Difference:", powerDifference);
